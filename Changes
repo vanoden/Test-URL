@@ -1,0 +1,6 @@
+Revision history for Perl extension Test::URL.
+
+0.01  Wed Nov  7 10:03:43 2012
+	- original version; created by h2xs 1.23 with options
+		-AXc -n Test::URL
+
