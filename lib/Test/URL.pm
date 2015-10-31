@@ -253,24 +253,38 @@ sub statistics
 }
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
-Test::URL - Perl extension for blah blah blah
+Test::URL - Simple http client for testing web site availability and
+performance on a specified host.
 
 =head1 SYNOPSIS
 
   use Test::URL;
-  blah blah blah
+  $_client = Test::URL->new();
+  $response = $_client->get(
+        "http://www.example.com/test",
+        {
+            "Host"              => server1.example.com,
+            "User-Agent"        => 'TestURL/0.01',
+            "Accept"            => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            "Accept-Language"   => 'en-US,en;q=0.5',
+            "Connection"        => 'close',
+        }
+    );
+    if ($_client->{error})
+    {
+        return {error => "Error making request: ".$_client->{error}};
+    }
+
+    print "Response: ".$response->{code}." ".$response->{status}."\n";
 
 =head1 DESCRIPTION
 
-Stub documentation for Test::URL, created by h2xs. It looks like the
-author of the extension was negligent enough to leave the stub
-unedited.
-
-Blah blah blah.
+This is a simple extension developed for testing web urls.  It can be
+used to test availability and performance of a URL.  Any headers can be
+specified so it is easy to test virtual hosts on a specified server.
 
 =head2 EXPORT
 
